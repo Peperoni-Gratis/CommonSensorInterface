@@ -32,6 +32,8 @@ public:
     virtual esp_err_t get_sampling_rate(uint64_t &millis) = 0;
     //block current task until new reading is available, if wait_time = 0 then this is just polling the sensor to see if new reading is available
     virtual esp_err_t wait_new_reading(TickType_t wait_time) = 0;
+    //check if the sampling is active
+    virtual esp_err_t get_sampling_status(bool &sampling_status) = 0;
 };
 
 #endif ESPTESTING_COMMON_SENSOR_INTERFACE_H

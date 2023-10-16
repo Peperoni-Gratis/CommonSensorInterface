@@ -1,7 +1,3 @@
-//
-// Created by Lorenzo on 07/10/2023.
-//
-
 #ifndef ESPTESTING_COMMON_SENSOR_INTERFACE_H
 #define ESPTESTING_COMMON_SENSOR_INTERFACE_H
 
@@ -25,16 +21,14 @@ public:
 template <typename T>
 class FixedRateSensorInterface: public CommonSensorInterface<T>{
 public:
-    //create task that samples at fixed rate
-    virtual esp_err_t start_sampling(const char* task_name) = 0;
+    //create task that samples at fixed rate giving the task name and the sampling rate in milliseconds
+    virtual esp_err_t start_sampling(const char* task_name, uint64_t &sampling_rate) = 0;
     //destroy task that samples at fixed rate
     virtual esp_err_t stop_sampling() = 0;
-    //set the sampling rate in milliseconds
-    virtual esp_err_t set_sampling_rate(uint64_t millis) = 0;
     //get the sampling rate in milliseconds
     virtual esp_err_t get_sampling_rate(uint64_t &millis) = 0;
-    //check if the sampling is active
-    virtual esp_err_t get_sampling_status(bool &sampling_status) = 0;
+    //check if the sampling is active by returning ESP_OK
+    virtual esp_err_t get_sampling_status() = 0;
 };
 
 #endif ESPTESTING_COMMON_SENSOR_INTERFACE_H

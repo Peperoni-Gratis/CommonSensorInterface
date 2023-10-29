@@ -2,7 +2,7 @@
 #define ESPTESTING_COMMON_SENSOR_INTERFACE_H
 
 #include <freertos/portmacro.h>
-#include "stdint.h"
+#include <cstdint>
 #include "esp_check.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
